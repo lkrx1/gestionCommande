@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Creation Commande{% endblock %}
+
+{% block body %}
+    <hr>
+    <h6>Ajout d'un nouvel commande</h6>
+    <hr>
+    <form action="" method="POST">
+      <div class="form-group">
+        <fieldset>
+          <label class="control-label" for="nomClient_field">Nom du Client</label>
+          <input class="form-control" id="nomClient_field" type="text" name="nomClient" placeholder="inserer le nom du client">
+        </fieldset>
+        <fieldset>
+            <label class="control-label" for="adresseClient_field">Adresse du Client</label>
+            <input class="form-control" id="adresseClient_field" type="text" name="adresseClient" placeholder="inserer l'adresse du client">
+          </fieldset>
+        <hr>
+        <button type="submit" class="btn btn-info">Ajouter</button>
+      </div>
+    </form>
+{% endblock %}

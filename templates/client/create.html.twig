@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Client{% endblock %}
+
+{% block body %}
+    <hr>
+    <h6>Ajout d'un nouvel client</h6>
+    <hr>
+    {{form_start(formClient)}}
+      <div class="form-group">
+        <fieldset>
+          {{form_row(formClient.nom,{ 'attr': {'placeholder':'inserer le nom du Client','class':'form-control'} })}}
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          {{form_row(formClient.adresse,{ 'attr': {'placeholder':'inserer l\'adresse du Client','class':'form-control'} })}}
+        </fieldset>
+      </div>
+      <button type="submit" class="btn btn-info">
+        {% if editMode %}
+          Enregistrer
+        {% else %}
+          Ajouter
+        {% endif %}
+      </button>
+    {{form_end(formClient)}}
+{% endblock %}

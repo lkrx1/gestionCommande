@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block body %}
+    <hr>
+    <a class="btn btn-info" href="{{path('newClient')}}">Ajouter un nouvel client</a>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col">NOM</th>
+            <th scope="col">ADRESSE</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <th>{{client.nom}}</th>
+                <td>{{client.adresse}}</td>
+                <td>
+                    <a href="clients/{{client.id}}/edit" class="btn btn-info">Edit</a>
+                    <a href="clients/delete/{{client.id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

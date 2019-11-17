@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+    <hr>
+    <a class="btn btn-info" href="{{path('newProduit')}}">Ajouter un nouvel produit</a>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col">LIBELLE</th>
+            <th scope="col">CATEGORIE</th>
+            <th scope="col">PRIX UNITAIRE</th>
+            <th scope="col">QUANTITE</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <th>{{produit.libelle}}</th>
+                <td>{{produit.categorie.libelle}}</td>
+                <td>{{produit.pu}}</td>
+                <td>{{produit.qte}}</td>
+                <td>
+                    <a href="produits/{{produit.id}}/edit" class="btn btn-info">Edit</a>
+                    <a href="produits/delete/{{produit.id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

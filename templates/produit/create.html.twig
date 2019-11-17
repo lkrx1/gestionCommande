@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau produit{% endblock %}
+
+{% block body %}
+    <hr>
+    <h6>Ajout d'un nouvel produit</h6>
+    <hr>
+    {{form_start(formProduit)}}
+      <div class="form-group">
+        <fieldset>
+          {{form_row(formProduit.libelle,{ 'attr': {'placeholder':'inserer le nom du Produit','class':'form-control'} })}}
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          {{form_row(formProduit.qte,{ 'attr': {'placeholder':'inserer la quantité du Produit','class':'form-control'} })}}
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          {{form_row(formProduit.pu,{ 'attr': {'placeholder':'inserer le prix unitaire du Produit','class':'form-control'} })}}
+        </fieldset>
+      </div>
+      <button type="submit" class="btn btn-info">
+        {% if editMode %}
+          Enregistrer
+        {% else %}
+          Ajouter
+        {% endif %}
+      </button>
+    {{form_end(formProduit)}}
+    {{form_start(formCategorie)}}
+    {{form_row(formCategorie.libelle,{ 'attr': {'class':'form-control'} })}}
+    {{form_end(formCategorie)}}
+    <!-- <div class="form-group">
+        <fieldset>
+          <label class="control-label" for="disabledInput">Nom du produit</label>
+          <input class="form-control" id="disabledInput" type="text" placeholder="inserer le nom du produit">
+        </fieldset>
+        <fieldset>
+            <label class="control-label" for="disabledInput">Quantite du produit</label>
+            <input class="form-control" id="disabledInput" type="text" placeholder="inserer la quantité du produit">
+        </fieldset>
+        <fieldset>
+            <label class="control-label" for="disabledInput">Priw unitaire du produit</label>
+            <input class="form-control" id="disabledInput" type="text" placeholder="inserer le prix unitaire du produit">
+        </fieldset>
+        <hr>
+        <button type="button" class="btn btn-info">Ajouter</button>
+      </div> -->
+{% endblock %}

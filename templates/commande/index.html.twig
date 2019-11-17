@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <hr>
+    <a class="btn btn-info" href="{{path('newCommande')}}">Ajouter un nouvel commmande</a>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">DATE COMMANDE</th>
+            <th scope="col">NOM CLIENT</th>
+            <th scope="col">MONTANT TOTAL</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+         {% for commande in commandes %}
+            <tr>
+                <th>{{commande.dateCom | date('d/M/Y')}}</th>
+                <td>{{commande.client.nom}}</td>
+                <td>
+                  {% set montant_total = 0 %}
+                  {% for ligneCommande in commande.ligneCommande %}
+                    {% set montant_total = montant_total + ligneCommande.produit.pu  * ligneCommande.qteCom %}
+                  {% endfor %}
+                  {{montant_total}} Ar
+                </td>
+                <td>
+                    <a href="{{ path('showCommande',{'id':commande.id}) }}" class="btn btn-primary">Info</a>
+                    <a href="commandes/2/edit" class="btn btn-info">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+         {% endfor %}
+        </tbody>
+      </table> 
+{% endblock %}
