@@ -40,6 +40,15 @@ class Client
     {
         $this->commande = new ArrayCollection();
     }
+    /**
+     * (Add this method into your class)
+     *
+     * @return string String representation of this class
+     */
+    public function __toString()
+    {
+        return $this->nom;
+    }
 
     public function getId(): ?int
     {

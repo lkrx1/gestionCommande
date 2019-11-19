@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout Produit{% endblock %}
+
+{% block body %}
+<hr>
+<h6>Ajout d'un nouvel produit à notre commande</h6>
+<hr>
+<p><u><em>Nom Client</em></u> : {{commande.client.nom}}</p>
+<p><u><em>Date de commande</em></u> : {{commande.dateCom | date('d/M/Y')}}</p>
+<hr>
+{{form_start(formLigneCommande)}}
+  <div class="form-group">
+    <fieldset>
+      {{form_row(formLigneCommande.produit,{ 'attr': {'class':'form-control'} })}}
+    </fieldset>
+  </div>
+  <div class="form-group">
+    <fieldset>
+      {{form_row(formLigneCommande.qteCom,{ 'attr': {'placeholder':'inserer le nombre de produit','class':'form-control'} })}}
+    </fieldset>
+  </div>
+  <button type="submit" class="btn btn-info">Ajouter le produit dans la commande</button>
+{{form_end(formLigneCommande)}}
+
+{% endblock %}

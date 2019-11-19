@@ -6,18 +6,23 @@
     <hr>
     <h6>Ajout d'un nouvel commande</h6>
     <hr>
-    <form action="" method="POST">
+    {{form_start(formCommande)}}
       <div class="form-group">
         <fieldset>
-          <label class="control-label" for="nomClient_field">Nom du Client</label>
-          <input class="form-control" id="nomClient_field" type="text" name="nomClient" placeholder="inserer le nom du client">
+          {{form_row(formCommande.client,{ 'attr': {'placeholder':'inserer le nom du Client','class':'form-control'} })}}
         </fieldset>
-        <fieldset>
-            <label class="control-label" for="adresseClient_field">Adresse du Client</label>
-            <input class="form-control" id="adresseClient_field" type="text" name="adresseClient" placeholder="inserer l'adresse du client">
-          </fieldset>
-        <hr>
-        <button type="submit" class="btn btn-info">Ajouter</button>
       </div>
-    </form>
+      <div class="form-group">
+        <fieldset>
+          {{form_row(formCommande.dateCom,{ 'attr': {'placeholder':'inserer l\'adresse du Client','class':'form-control'} })}}
+        </fieldset>
+      </div>
+      <button type="submit" class="btn btn-info">
+        {% if editMode %}
+          Enregistrer
+        {% else %}
+          Ajouter
+        {% endif %}
+      </button>
+    {{form_end(formCommande)}}
 {% endblock %}

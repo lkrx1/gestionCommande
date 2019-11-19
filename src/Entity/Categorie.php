@@ -32,6 +32,15 @@ class Categorie
     {
         $this->produit = new ArrayCollection();
     }
+    /**
+     * (Add this method into your class)
+     *
+     * @return string String representation of this class
+     */
+    public function __toString()
+    {
+        return $this->libelle;
+    }
 
     public function getId(): ?int
     {

@@ -3,6 +3,9 @@
     <hr>
     <p><u>Nom Client</u> : <strong>{{commande.client.nom}}</strong> </p>
     <p><u>Date de commande</u> : <strong>{{commande.dateCom | date('d/M/Y')}}</strong></p>
+    <hr>
+    <a href="{{ path('addProduit',{'id':commande.id}) }}" class="btn btn-info">Ajouter un produit</a>
+    <hr>
     <table class="table table-hover">
         <thead>
             <tr>

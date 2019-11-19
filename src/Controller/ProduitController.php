@@ -24,17 +24,6 @@ class ProduitController extends AbstractController
         ]);
     }
     /**
-     * @Route("/produits/{id}", name="showProduit")
-     */
-    public function show($id)
-    {
-        $repo = $this->getDoctrine()->getRepository(Produit::class);
-        $produit = $repo->findBy(array('id'=>$id));
-        return $this->render('produit/show.html.twig',[
-            'produit'=>$produit,
-        ]);
-    }
-    /**
      * @Route("/produits/new", name="newProduit")
      * @Route("/produits/{id}/edit", name="editProduit")
      */
@@ -42,12 +31,6 @@ class ProduitController extends AbstractController
         if(!$produit){
             $produit = new Produit();
         }
-        $categorie = new Categorie();
-        $formCategorie = $this->createFormBuilder($categorie)
-                                ->add('categories',CategorieType::class,[
-                                    'class'=>Categorie::class,
-                                    'choice_label'=>'libelle'
-                                ]);
         
         $formProduit = $this->createForm(ProduitType::class,$produit);
 
@@ -60,8 +43,18 @@ class ProduitController extends AbstractController
         dump($produit);
         return $this->render('produit/create.html.twig',[
             'formProduit'=>$formProduit->createView(),
-            'formCategorie'=>$formCategorie->createView(),
             'editMode'=>$produit->getId()!==null
+        ]);
+    }
+     /**
+     * @Route("/produits/{id}", name="showProduit")
+     */
+    public function show($id)
+    {
+        $repo = $this->getDoctrine()->getRepository(Produit::class);
+        $produit = $repo->findBy(array('id'=>$id));
+        return $this->render('produit/show.html.twig',[
+            'produit'=>$produit,
         ]);
     }
     /**
